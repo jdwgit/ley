@@ -13,7 +13,7 @@ class DLDemoMenuViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var tableView: UITableView!
     
     // data
-    let segues = ["shouye1", "zhaoyao1", "shenbian1", "gouwu11", "geren1", "shezhi1"]
+    let segues = ["shouye", "zhaoyao", "shenbian", "gouwu", "geren", "shezhi"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +43,8 @@ class DLDemoMenuViewController: UIViewController, UITableViewDelegate, UITableVi
         let nvc = self.mainNavigationController()
         if let hamburguerViewController = self.findHamburguerViewController() {
             hamburguerViewController.hideMenuViewControllerWithCompletion({ () -> Void in
-                nvc.visibleViewController.performSegueWithIdentifier(self.segues[indexPath.row], sender: nil)
-                hamburguerViewController.contentViewController = nvc
+                    nvc.visibleViewController.performSegueWithIdentifier(self.segues[indexPath.row], sender: nil)
+                    hamburguerViewController.contentViewController = nvc
             })
         }
     }
@@ -54,5 +54,5 @@ class DLDemoMenuViewController: UIViewController, UITableViewDelegate, UITableVi
     func mainNavigationController() -> DLHamburguerNavigationController {
         return self.storyboard?.instantiateViewControllerWithIdentifier("main") as! DLHamburguerNavigationController
     }
-    
+
 }

@@ -17,7 +17,7 @@ class DLHamburguerContainerViewController: UIViewController {
     // structure
     // * weak 当不被引用时可以释放内存
     weak var hamburguerViewController: DLHamburguerViewController!      // root hamburguer view controller
-    weak var viewController: ViewController!
+    weak var viewController: shouye!
     var containerView: UIView!                                          // view containing the main content
     var containerOrigin = CGPointZero                                   // origin of container view
     var shouldAnimatePresentation = false                               // true if menu presentation should be animated.
