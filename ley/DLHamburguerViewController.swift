@@ -196,10 +196,7 @@ class DLHamburguerViewController: UIViewController {
             w = desiredMenuViewSize!.width > 0 ? desiredMenuViewSize!.width : contentViewController.view.frame.size.width
             h = desiredMenuViewSize!.height > 0 ? desiredMenuViewSize!.height : contentViewController.view.frame.size.height
         } else { // 基于方向的菜单大小计算.
-            var span: CGFloat = 0.0
-            if self.menuDirection == .Left || self.menuDirection == .Right {
-                span = kDLHamburguerMenuSpan
-            }
+            var span: CGFloat = kDLHamburguerMenuSpan
             if forRotation { w = self.contentViewController.view.frame.size.height - span; h = self.contentViewController.view.frame.size.width
             }
             else { w = self.contentViewController.view.frame.size.width - span; h = self.contentViewController.view.frame.size.height
@@ -224,7 +221,13 @@ class DLHamburguerViewController: UIViewController {
     func panGestureRecognized (recognizer: UIPanGestureRecognizer) {
         self.delegate?.hamburguerViewController?(self, didPerformPanGesture: recognizer)
         if self.gestureEnabled {
-            if recognizer.state == .Began { self.showMenuViewControllerAnimated(true, completion: nil) }
+            if recognizer.state == .Began {
+                let point = recognizer.translationInView(self.view)
+                if point.x > 0{
+                    self.showMenuViewControllerAnimated(true, completion: nil)
+                }
+                
+            }
             self.containerViewController.panGestureRecognized(recognizer)
         }
     }
