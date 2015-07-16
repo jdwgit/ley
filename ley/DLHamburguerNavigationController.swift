@@ -13,6 +13,7 @@ class DLHamburguerNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: "panGestureRecognized:"))
+        
     }
     
     override func didReceiveMemoryWarning() {
